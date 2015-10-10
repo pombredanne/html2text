@@ -4,3 +4,7 @@ test/*output.md
 build
 dist
 *.egg-info
+.idea
+.coverage
+.coverage.*
+env/

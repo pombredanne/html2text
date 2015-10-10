@@ -1,49 +1,88 @@
-# [html2text](http://www.aaronsw.com/2002/html2text/)
+# html2text
+
+[![Build Status](https://secure.travis-ci.org/Alir3z4/html2text.png)](http://travis-ci.org/Alir3z4/html2text)
+[![Coverage Status](https://coveralls.io/repos/Alir3z4/html2text/badge.png)](https://coveralls.io/r/Alir3z4/html2text)
+[![Downloads](https://pypip.in/d/html2text/badge.png)](https://pypi.python.org/pypi/html2text/)
+[![Version](https://pypip.in/v/html2text/badge.png)](https://pypi.python.org/pypi/html2text/)
+[![Egg?](https://pypip.in/egg/html2text/badge.png)](https://pypi.python.org/pypi/html2text/)
+[![Wheel?](https://pypip.in/wheel/html2text/badge.png)](https://pypi.python.org/pypi/html2text/)
+[![Format](https://pypip.in/format/html2text/badge.png)](https://pypi.python.org/pypi/html2text/)
+[![License](https://pypip.in/license/html2text/badge.png)](https://pypi.python.org/pypi/html2text/)
+
 
 html2text is a Python script that converts a page of HTML into clean, easy-to-read plain ASCII text. Better yet, that ASCII also happens to be valid Markdown (a text-to-HTML format).
 
-Usage: `html2text.py [(filename|url) [encoding]]`
 
-    Options:
-      --version             show program's version number and exit
-      -h, --help            show this help message and exit
-      --ignore-links        don't include any formatting for links
-      --ignore-images       don't include any formatting for images
-      -g, --google-doc      convert an html-exported Google Document
-      -d, --dash-unordered-list
-                            use a dash rather than a star for unordered list items
-      -b BODY_WIDTH, --body-width=BODY_WIDTH
-                            number of characters per output line, 0 for no wrap
-      -i LIST_INDENT, --google-list-indent=LIST_INDENT
-                            number of pixels Google indents nested lists
-      -s, --hide-strikethrough
-                            hide strike-through text. only relevent when -g is
-                            specified as well
+Usage: `html2text [(filename|url) [encoding]]`
 
-Or you can use it from within Python:
+| Option                                                 | Description
+|--------------------------------------------------------|---------------------------------------------------
+| `--version`                                            | Show program's version number and exit
+| `-h`, `--help`                                         | Show this help message and exit
+| `--ignore-links`                                       | Don't include any formatting for links
+|`--escape-all`                                          | Escape all special characters.  Output is less readable, but avoids corner case formatting issues.
+| `--reference-links`                                    | Use reference links instead of links to create markdown
+| `--mark-code`                                          | Mark preformatted and code blocks with [code]...[/code]
 
-    import html2text
-    print html2text.html2text("<p>Hello, world.</p>")
+For a complete list of options see the [docs](docs/usage.md)
+
+
+Or you can use it from within `Python`:
+
+```
+>>> import html2text
+>>>
+>>> print(html2text.html2text("<p><strong>Zed's</strong> dead baby, <em>Zed's</em> dead.</p>"))
+**Zed's** dead baby, _Zed's_ dead.
+
+```
+
 
 Or with some configuration options:
+```
+>>> import html2text
+>>>
+>>> h = html2text.HTML2Text()
+>>> # Ignore converting links from HTML
+>>> h.ignore_links = True
+>>> print h.handle("<p>Hello, <a href='http://earth.google.com/'>world</a>!")
+Hello, world!
 
-    import html2text
-    h = html2text.HTML2Text()
-    h.ignore_links = True
-    print h.handle("<p>Hello, <a href='http://earth.google.com/'>world</a>!")
+>>> print(h.handle("<p>Hello, <a href='http://earth.google.com/'>world</a>!"))
 
-_Originally written by Aaron Swartz. This code is distributed under the GPLv3._
+Hello, world!
+
+>>> # Don't Ignore links anymore, I like links
+>>> h.ignore_links = False
+>>> print(h.handle("<p>Hello, <a href='http://earth.google.com/'>world</a>!"))
+Hello, [world](http://earth.google.com/)!
+
+```
+
+*Originally written by Aaron Swartz. This code is distributed under the GPLv3.*
 
 
-## How to do a release
+## How to install
 
-1. Update the version in `html2text.py`
-2. Update the version in `setup.py`
-3. Run `python setup.py sdist upload`
+`html2text` is available on pypi
+https://pypi.python.org/pypi/html2text
+
+```
+$ pip install html2text
+```
+
 
 ## How to run unit tests
 
-    cd test/
-    python run_tests.py
+    PYTHONPATH=$PYTHONPATH:. coverage run --source=html2text setup.py test -v
 
-[![Build Status](https://secure.travis-ci.org/aaronsw/html2text.png)](http://travis-ci.org/aaronsw/html2text)
+To see the coverage results:
+    
+    coverage combine
+    coverage html
+
+then open the `./htmlcov/index.html` file in your browser.
+
+## Documentation
+
+Documentation lives [here](docs/index.md)
