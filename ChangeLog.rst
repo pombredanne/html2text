@@ -1,10 +1,44 @@
-0000.0.00
+2016.5.29
+=========
+----
+
+* Fix #125: --pad_tables now pads table cells to make them look nice.
+* Fix #114: Break does not interrupt blockquotes
+* Deprecation warnings for URL retrieval.
+
+
+2016.4.2
+=========
+----
+
+* Fix #106: encoding by stdin
+* Fix #89: Python 3.5 support.
+* Fix #113: inplace baseurl substitution for <a> and <img> tags.
+* Feature #118: Update the badges to badge.kloud51.com
+* Fix #119: new-line after a list is inserted
+
+
+2016.1.8
+=========
+----
+
+* Feature #99: Removed duplicated initialisation.
+* Fix #100: Get element style key error.
+* Fix #101: Fix error end tag pop exception
+* <s>, <strike>, <del> now rendered as ~~text~~.
+
+
+2015.11.4
 =========
 ----
 
 * Fix #38: Long links wrapping controlled by `--no-wrap-links`.
 * Note: `--no-wrap-links` implies `--reference-links`
+* Feature #83: Add callback-on-tag.
 * Fix #87: Decode errors can be handled via command line.
+* Feature #95: Docs, decode errors spelling mistake.
+* Fix #84: Make bodywidth kwarg overridable using config.
+
 
 2015.6.21
 =========
@@ -16,7 +50,6 @@
 * Fix #61: Functionality added for optional use of automatic links.
 * Feature #80: ``title`` attribute is preserved in both inline and reference links.
 * Feature #82: More command line options. See docs.
-* Fix #84: Make bodywidth kwarg overridable using config.
 
 
 2015.6.12

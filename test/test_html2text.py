@@ -170,8 +170,18 @@ def generate_test(fn):
         module_args['mark_code'] = True
         cmdline_args.append('--mark-code')
 
+    if base_fn.startswith('pad_table'):
+        module_args['pad_tables'] = True
+        cmdline_args.append('--pad-tables')
+
     if base_fn not in ['bodywidth_newline.html', 'abbr_tag.html']:
         test_func = None
+
+    if base_fn == 'inplace_baseurl_substitution.html':
+        module_args['baseurl'] = 'http://brettterpstra.com'
+        module_args['body_width'] = 0
+        # there is no way to specify baseurl in cli :(
+        test_cmd = None
 
     return test_mod, test_cmd, test_func
 

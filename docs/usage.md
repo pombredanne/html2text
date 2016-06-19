@@ -8,11 +8,24 @@ Installing
 
 These are the methods you can get the module installed:-
 
-    1. `pip install html2text` for those who have pip
-    2. Clone the repository from `https://github.com/Alir3z4/html2text.git`
-        1. `git clone https://github.com/Alir3z4/html2text`
-        2. `python setup build`
-        3. `python setup install`
+### PIP
+
+For those who have pip, we got your back.
+
+```
+$ pip install html2text
+```
+
+### Clone from Git Repository
+
+Clone the repository from https://github.com/Alir3z4/html2text
+
+```
+$ git clone --depth 1 https://github.com/Alir3z4/html2text.git
+$ python setup.py build
+$ python setup.py install
+```
+
 
 
 Basic Usage
@@ -64,7 +77,7 @@ simple indications of their function.
     - IGNORE_EMPHASIS
     - BYPASS_TABLES
     - SINGLE_LINE_BREAK to use a single line break rather than two
-    - UNIFIABLE is a dictionary which maps unicode abbrevations to ASCII
+    - UNIFIABLE is a dictionary which maps unicode abbreviations to ASCII
                 values
     - RE_SPACE for finding space-only lines
     - RE_UNESCAPE for finding html entities like &nbsp;
@@ -104,7 +117,7 @@ Command line options
 |`-d`, `--dash-unordered-list`                           | Use a dash rather than a star for unordered list items
 |`-b` `BODY_WIDTH`, `--body-width`=`BODY_WIDTH`          | Number of characters per output line, `0` for no wrap
 |`-i` `LIST_INDENT`, `--google-list-indent`=`LIST_INDENT`| Number of pixels Google indents nested lists
-|`-s`, `--hide-strikethrough`                            | Hide strike-through text. only relevent when `-g` is specified as well
+|`-s`, `--hide-strikethrough`                            | Hide strike-through text. only relevant when `-g` is specified as well
 |`--escape-all`                                          | Escape all special characters.  Output is less readable, but avoids corner case formatting issues.
 | `--bypass-tables`                                      | Format tables in HTML rather than Markdown syntax.
 | `--single-line-break`                                  | Use a single line break after a block element rather than two.
@@ -112,9 +125,10 @@ Command line options
 | `--ignore-emphasis`                                    | Ignore all emphasis formatting in the html.
 | `-e`, `--asterisk-emphasis`                            | Use asterisk rather than underscore to emphasize text
 | `--unicode-snob`                                       | Use unicode throughout instead of ASCII
-| `--no-automatic-links`                                 | Do not use automatic links like <http://googel.com>
+| `--no-automatic-links`                                 | Do not use automatic links like <http://google.com>
 | `--no-skip-internal-links`                             | Turn off skipping of internal links
 | `--links-after-para`                                   | Put the links after the paragraph and not at end of document
 | `--mark-code`                                          | Mark code with [code]...[/code] blocks
 | `--no-wrap-links`                                      | Do not wrap links during text wrapping. Implies `--reference-links`
-| `--decode_errors`=`HANDLER`                            | What to do in case an error is encountered. `ignore`, `strict`, `replace` etc.
+| `--decode-errors`=`HANDLER`                            | What to do in case an error is encountered. `ignore`, `strict`, `replace` etc.
+| `--pad-tables`                                         | Use padding to make tables look good.

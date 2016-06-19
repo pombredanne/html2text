@@ -1,6 +1,13 @@
 # coding: utf-8
 import sys
+
 from setuptools import setup, Command, find_packages
+
+try:
+    from pypandoc import convert
+    read_md = lambda f: convert(f, 'rst')
+except ImportError:
+    read_md = lambda f: open(f, 'r').read()
 
 requires_list = []
 try:
@@ -13,7 +20,8 @@ else:
 
 
 class RunTests(Command):
-    """New setup.py command to run all tests for the package.
+    """
+    New setup.py command to run all tests for the package.
     """
     description = "run all tests for the package"
 
@@ -36,6 +44,7 @@ setup(
     name="html2text",
     version=".".join(map(str, __import__('html2text').__version__)),
     description="Turn HTML into equivalent Markdown-structured text.",
+    long_description=read_md('README.md'),
     author="Aaron Swartz",
     author_email="me@aaronsw.com",
     maintainer='Alireza Savand',
@@ -56,9 +65,10 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.0',
-        'Programming Language :: Python :: 3.1',
         'Programming Language :: Python :: 3.2',
-        'Programming Language :: Python :: 3.3'
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
     ],
     entry_points="""
         [console_scripts]
